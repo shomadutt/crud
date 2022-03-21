@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EnrollmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::get('database-test', function () {
     }
 });
 
-Route::get('add-student', [StudentController::class, 'addStudent'])->name('add.student');
+Route::get('add-student', [StudentController::class, 'addStudent'])->name('save.student');
 Route::post('add-student', [StudentController::class, 'saveStudent'])->name('save.student');
+Route::post('add-student', [EnrollmentController::class, 'saveEnrollment'])->name('save.student');

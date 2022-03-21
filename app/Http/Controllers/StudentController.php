@@ -20,5 +20,6 @@ class StudentController extends Controller
             'name' => $request->name,
             'email_address' => $request->email_address
         ]);
+        $studentID = DB::table('students')->get('id');
     }
 }
