@@ -16,10 +16,21 @@ class StudentController extends Controller
 
     public function saveStudent(Request $request)
     {
-        DB::table('students')->insert([
+        $studentID = DB::table('students')->insertGetId([
             'name' => $request->name,
             'email_address' => $request->email_address
         ]);
-        $studentID = DB::table('students')->get('id');
+
+        $schools = $request->input('schools');
+
+        foreach ($schools as $school) {
+
+            DB::table('enrollments')->insert([
+
+                'school_id' => $school,
+                'student_id' => $studentID
+            ]);
+        }
+        return back()->with('student_add', 'Student added successfully');
     }
 }

@@ -30,4 +30,3 @@ Route::get('database-test', function () {
 
 Route::get('add-student', [StudentController::class, 'addStudent'])->name('save.student');
 Route::post('add-student', [StudentController::class, 'saveStudent'])->name('save.student');
-Route::post('add-student', [EnrollmentController::class, 'saveEnrollment'])->name('save.student');
