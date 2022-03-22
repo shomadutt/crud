@@ -12,6 +12,11 @@ class Student extends Model
 
     public function schools()
     {
-        return $this->belongsToMany(School::class, 'enrollment');
+        return $this->belongsToMany(
+            School::class,
+            'enrollment',
+            'sschool_id',
+            'student_id'
+        );
     }
 }

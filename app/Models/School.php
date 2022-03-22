@@ -10,8 +10,13 @@ class School extends Model
     use HasFactory;
     protected $fillable = ['school_name'];
 
-    public function schools()
+    public function students()
     {
-        return $this->belongsToMany(School::class, 'enrollment');
+        return $this->belongsToMany(
+            Student::class,
+            'enrollment',
+            'school_id',
+            'student_id'
+        );
     }
 }

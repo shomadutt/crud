@@ -28,5 +28,8 @@ Route::get('database-test', function () {
     }
 });
 
-Route::get('add-student', [StudentController::class, 'addStudent'])->name('save.student');
+Route::get('add-student', [StudentController::class, 'selectSchools'])->name('save.student');
 Route::post('add-student', [StudentController::class, 'saveStudent'])->name('save.student');
+Route::get('select-school', [EnrollmentController::class, 'schoolDropdown'])->name('list.student');
+Route::post('select-school', [EnrollmentController::class, 'displayStudents'])->name('list.student');
+Route::post('display-students', [EnrollmentController::class, 'displayStudents'])->name('list.student');

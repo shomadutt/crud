@@ -5,11 +5,9 @@
 <div class="row">
     <div class="col-md-12">
         <br />
-        <h3>Student List</h3>
+        <h3>Select School</h3>
         <br />
-        @if(Session::has('student_add'))
-        <span>{{Session::get('student_add')}}</span>
-        @endif
+
 
         <form method="post" action="{{route('list.student')}}">
             @csrf
@@ -24,7 +22,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+
+            <br />
+            <br />
+
         </form>
+
+
     </div>
 </div>
 @endsection

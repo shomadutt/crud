@@ -8,7 +8,7 @@ use App\Models\School;
 
 class StudentController extends Controller
 {
-    public function addStudent()
+    public function selectSchools()
     {
         $schools = School::orderBy('school_name')->get()->toArray();
         return view('add-student', compact('schools'));
