@@ -8,6 +8,11 @@
         <h3>Select School</h3>
         <br />
 
+        <a href="{{url('add-student')}}" id="button" class="btn">Add student</a>
+        <br />
+        <br />
+        <br />
+
 
         <form method="post" action="{{route('list.student')}}">
             @csrf

@@ -7,6 +7,12 @@
         <br />
         <h3>Add Student</h3>
         <br />
+
+        <a href="{{url('select-school')}}" id="button" class="btn">Select school to view</a>
+        <br />
+        <br />
+        <br />
+
         @if(Session::has('student_add'))
         <span>{{Session::get('student_add')}}</span>
         @endif

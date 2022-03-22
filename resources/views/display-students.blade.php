@@ -8,8 +8,12 @@
         <h3>Student List</h3>
         <br />
 
+        <a href="{{url('select-school')}}" id="button" class="btn">Select school to view</a>
+        <br />
+        <br />
+        <br />
 
-        <table>
+        <table class="table table-striped">
 
 
             <tr>
