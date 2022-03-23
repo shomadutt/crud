@@ -8,7 +8,7 @@
         <h3>Add Student</h3>
         <br />
 
-        <a href="{{url('select-school')}}" id="button" class="btn">Select school to view</a>
+        <a href="{{url('select-school')}}" id="button" class="btn">View students</a>
         <br />
         <br />
         <br />

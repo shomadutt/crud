@@ -8,7 +8,7 @@
         <h3>Student List</h3>
         <br />
 
-        <a href="{{url('select-school')}}" id="button" class="btn">Select school to view</a>
+        <a href="{{url('select-school')}}" id="button" class="btn">View students</a>
         <br />
         <br />
         <br />
@@ -23,8 +23,8 @@
             @foreach($studentData as $student)
             <tr>
 
-                <td>{{$student->name}}</td>
-                <td>{{$student->email_address}}</td>
+                <td>{{$student['name']}}</td>
+                <td>{{$student['email_address']}}</td>
 
             </tr>
             @endforeach

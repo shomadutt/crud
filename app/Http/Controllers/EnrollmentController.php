@@ -24,9 +24,39 @@ class EnrollmentController extends Controller
 
         $selectedSchool = $request->schoolSelection;
 
-        $enrollmentRecords = DB::table('enrollments')->where('school_id', $selectedSchool)->get('student_id')->toArray();
+        //error_log(print_r($selectedSchool));
 
-        $studentData = Student::find($enrollmentRecords);
+        $enrollmentRecords = Enrollment::select(['student_id'])->where('school_id', $selectedSchool)->get()->toArray();
+
+        // print "<pre>";
+        // error_log(print_r($enrollmentRecords));
+        // print "<pre>";
+
+        $studentIDs = [];
+        foreach ($enrollmentRecords as $record) {
+
+
+            // error_log(print_r($record['student_id']));
+
+            array_push($studentIDs, $record['student_id']);
+        }
+
+        // print "<pre>";
+        // error_log(print_r($studentIDs));
+        // print "<pre>";
+
+        foreach ($studentIDs as $student) {
+            // print " < pre > ";
+            // error_log(print_r($student));
+            // print " < pre > ";
+
+            $studentData = Student::select('name', 'email_address')->where('id', $student)->get()->toArray();
+        }
+
+        // print "<pre>";
+        // error_log(print_r($studentData));
+        // print "<pre>";
+
         return view('display-students', compact('studentData'));
     }
 }
