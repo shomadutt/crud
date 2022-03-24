@@ -21,41 +21,52 @@ class EnrollmentController extends Controller
 
     public function displayStudents(Request $request)
     {
-
+        // the school selected by the user
         $selectedSchool = $request->schoolSelection;
 
         //error_log(print_r($selectedSchool));
 
-        $enrollmentRecords = Enrollment::select(['student_id'])->where('school_id', $selectedSchool)->get()->toArray();
+        // get the student ids in an array, from the enrollment table where the school_id is the same as the selected school
+        $enrollmentStudentIDs = Enrollment::select(['student_id'])->where('school_id', $selectedSchool)->get()->toArray();
 
         // print "<pre>";
-        // error_log(print_r($enrollmentRecords));
+        // error_log(print_r($enrollmentStudentIDs));
         // print "<pre>";
 
-        $studentIDs = [];
-        foreach ($enrollmentRecords as $record) {
+        // get the student ids out of the enrollments array and into a new array that holds only the integer student ids
 
+        $enrollmentStudentIDsArray = [];
 
-            // error_log(print_r($record['student_id']));
-
-            array_push($studentIDs, $record['student_id']);
+        foreach ($enrollmentStudentIDs as $enrollmentStudent) {
+            // print "<pre>";
+            // error_log(print_r($enrollmentStudent['student_id']));
+            // print "<pre>";
+            array_push($enrollmentStudentIDsArray, $enrollmentStudent['student_id']);
         }
 
         // print "<pre>";
-        // error_log(print_r($studentIDs));
+        // error_log(print_r($enrollmentStudentIDsArray));
         // print "<pre>";
 
-        foreach ($studentIDs as $student) {
-            // print " < pre > ";
-            // error_log(print_r($student));
-            // print " < pre > ";
+        // use the student ids from the enrollments table to get the data for students in the students table
+        $studentData = [];
 
-            $studentData = Student::select('name', 'email_address')->where('id', $student)->get()->toArray();
+        foreach ($enrollmentStudentIDsArray as $key => $value) {
+            $studentData[$key] = DB::table('students')->where('id', '=', $value)->get();
         }
 
         // print "<pre>";
         // error_log(print_r($studentData));
         // print "<pre>";
+
+
+        // foreach ($studentData as $student) {
+        //     foreach ($student as $stud) {
+        //         error_log(print_r($stud->name));
+        //         error_log(print_r($stud->email_address));
+        //     }
+        // }
+
 
         return view('display-students', compact('studentData'));
     }
