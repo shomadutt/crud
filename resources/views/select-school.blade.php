@@ -18,8 +18,9 @@
             @csrf
 
             <div class="mb-3">
-                <label for="select" class="form-label">Select school</label>
+
                 <select class="form-select" name="schoolSelection">
+                    <option value="">Please select a school</option>
                     @foreach($schoolsArray as $row)
                     <option value="{{$row['id']}}">{{$row['school_name']}}</option>
                     @endforeach
