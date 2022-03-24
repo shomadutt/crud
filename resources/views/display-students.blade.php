@@ -15,21 +15,25 @@
 
         <table class="table table-striped">
 
-
-            <tr>
-                <th>Name</th>
-                <th>Email address</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email address</th>
+                </tr>
+            </thead>
             @foreach($studentData as $student)
             @foreach($student as $stud)
-            <tr>
+            <tbody>
+                <tr>
 
-                <td>{{$stud->name}}</td>
-                <td>{{$stud->email_address}}</td>
+                    <td>{{$stud->name}}</td>
+                    <td>{{$stud->email_address}}</td>
 
-            </tr>
+                </tr>
+            </tbody>
             @endforeach
             @endforeach
+
         </table>
 
     </div>
