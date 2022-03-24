@@ -14,7 +14,7 @@
         <br />
 
         @if(Session::has('student_add'))
-        <span>{{Session::get('student_add')}}</span>
+        <span id="studentAdd">{{Session::get('student_add')}}</span>
         @endif
 
         <form method="post" action="{{route('save.student')}}">

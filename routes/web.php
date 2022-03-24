@@ -32,3 +32,4 @@ Route::get('add-student', [StudentController::class, 'selectSchools'])->name('sa
 Route::post('add-student', [StudentController::class, 'saveStudent'])->name('save.student');
 Route::get('select-school', [EnrollmentController::class, 'schoolDropdown'])->name('list.student');
 Route::post('select-school', [EnrollmentController::class, 'displayStudents'])->name('list.student');
+Route::post('display-students', [EnrollmentController::class, 'displayStudents'])->name('list.student');

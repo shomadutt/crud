@@ -21,18 +21,20 @@
                     <th>Email address</th>
                 </tr>
             </thead>
-            @foreach($studentData as $student)
-            @foreach($student as $stud)
+
             <tbody>
+                @foreach($studentData as $student)
+                @foreach($student as $stud)
                 <tr>
 
                     <td>{{$stud->name}}</td>
                     <td>{{$stud->email_address}}</td>
 
                 </tr>
+                @endforeach
+                @endforeach
             </tbody>
-            @endforeach
-            @endforeach
+
 
         </table>
 
