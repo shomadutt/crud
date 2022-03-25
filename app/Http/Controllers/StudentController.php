@@ -16,6 +16,12 @@ class StudentController extends Controller
 
     public function saveStudent(Request $request)
     {
+
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email_address' => 'required|unique:students|max:255',
+        ]);
+
         $studentID = DB::table('students')->insertGetId([
             'name' => $request->name,
             'email_address' => $request->email_address
